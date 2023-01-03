@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyChatGPT_Maui.Pages.DataPage"
+             Title="{Binding PageTitle}"
+             BackgroundColor="{StaticResource AppBlackColor}">
+<Grid HorizontalOptions="FillAndExpand"
+         VerticalOptions="FillAndExpand"
+         RowDefinitions="Auto,*" Padding="5">
+
+        <Frame Grid.Row="0"
+              Padding="0"
+              Margin="0"
+              HasShadow="False"
+              BorderColor="White"
+               BackgroundColor="Black">
+
+            <Grid Padding="0" HorizontalOptions="FillAndExpand"
+                  ColumnDefinitions="*,Auto">
+
+                <Entry Grid.Column="0" Style="{StaticResource MyAppEntryStyle}"
+                       Text="{Binding UserEnteredText}"
+                       Placeholder="Enter Text"/>
+
+                <Button Grid.Column="1" Text="Submit"
+                        Style="{StaticResource MyAppSubmitButtonStyle}"
+                        Command="{Binding SubmitCommand}"/>
+
+
+            </Grid>
+
+        </Frame>
+
+        <CollectionView Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        ItemsSource="{Binding ImageViewSource}"
+                        IsVisible="{Binding ImageCollectionVisible}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
+
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Image Source="{Binding AIImageSource}"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Aspect="AspectFit"
+                               WidthRequest="250"
+                               HeightRequest="250"/>
+
+                    </StackLayout>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <CollectionView Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        ItemsSource="{Binding TextViewSource}"
+                        IsVisible="{Binding TextCollectionVisible}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
+
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="8"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           HasShadow="False"
+                           BorderColor="Red"
+                           Padding="0">
+
+                        <Grid RowDefinitions="Auto,Auto"
+                              Padding="10">
+                            <Label Grid.Row="0" Style="{StaticResource MyAppLabelStyle}" Text="{Binding Question}"/>
+                            <Label Grid.Row="1" Style="{StaticResource MyAppLabelStyle}" Text="{Binding Answer}"/>
+                        </Grid>
+                    </Frame>
+
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+
+
+        </CollectionView>
+
+
+
+    </Grid>
+
+</ContentPage>
