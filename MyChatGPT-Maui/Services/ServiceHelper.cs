@@ -101,7 +101,7 @@ namespace MyChatGPT_Maui.Services
                     client.BaseAddress = new Uri(baseUrl);
 
 
-                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + "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");
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + "");
 
                     client.Timeout = TimeSpan.FromMilliseconds(20000);
 
